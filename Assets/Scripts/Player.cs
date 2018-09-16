@@ -1,34 +1,54 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 //using UnityStandardAssets.CrossPlatformInput;
 
-public class Player : MonoBehaviour {
+public class Player : NetworkBehaviour
+{
 
     Rigidbody2D myRigidBody;
     Animator myAnimator;
     Collider2D myCollider;
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float jumpHeight = 15f;
-
-	// Use this for initialization
-	void Start ()
+    
+    
+    void Start ()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myCollider = GetComponent<Collider2D>();
 
     }
-	
+    
 	// Update is called once per frame
 	void Update ()
     {
+        if (!isLocalPlayer)
+        {
+            CmdFlipSprite();
+            return;
+        }
         Run();
+        CmdFlipSprite();
+        Jump();
+
+       
+    }/// <summary>
+     /// khcghadgfkja
+     /// </summary>
+     /// 
+
+  
+    public void CmdFlipSprite()
+    {
+        bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
+        myAnimator.SetBool("Running", playerHasHorizontalSpeed);
         FlipSprite();
-       Jump();
-	}/// <summary>
-    /// khcghadgfkja
-    /// </summary>
+    }
+    
+
 
     private void Run()
     {
@@ -37,7 +57,7 @@ public class Player : MonoBehaviour {
         Vector2 playerVelocity = new Vector2(controlThrow*runSpeed, myRigidBody.velocity.y);
         myRigidBody.velocity = playerVelocity;
 
-        bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
+        bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon && myRigidBody.velocity.y == 0;
         myAnimator.SetBool("Running", playerHasHorizontalSpeed);
 
 
@@ -62,7 +82,9 @@ public class Player : MonoBehaviour {
                 Vector2 playerVelocity = new Vector2(0f, jumpHeight);
            
                 myRigidBody.velocity += playerVelocity;
-            }
+           
+
+        }
         
     }
 }
