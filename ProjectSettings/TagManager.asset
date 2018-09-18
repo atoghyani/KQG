@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Goal
   - Ball
+  - Item
+  - Chest
+  - Chest Right
+  - Chest Left
   layers:
   - Default
   - TransparentFX
@@ -18,6 +22,8 @@ TagManager:
   - Ground
   - MinimapLayer
   - Player
+  - floor
+  - 
   - 
   - 
   - 
