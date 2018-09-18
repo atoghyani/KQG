@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 
 public class Player : NetworkBehaviour
 {
+    public Camera camera;
 
     Rigidbody2D myRigidBody;
     Animator myAnimator;
@@ -20,6 +21,10 @@ public class Player : NetworkBehaviour
         myAnimator = GetComponent<Animator>();
         myCollider = GetComponent<Collider2D>();
 
+    }
+    public override void OnStartLocalPlayer()
+    {
+        Camera.main.GetComponent<CameraController>().setTarget(gameObject.transform);
     }
     
 	// Update is called once per frame
