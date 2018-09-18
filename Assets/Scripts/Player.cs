@@ -18,6 +18,7 @@ public class Player : NetworkBehaviour
     Transform currentItem = null;
     Score scoreLeft;
     Score scoreRight;
+    bool hasItem = false;
 
 
     void Start()
@@ -126,21 +127,27 @@ public class Player : NetworkBehaviour
     {
         // pickup if it has tag "Item" and we are not carrying anything
         if (other.CompareTag("Item") && currentItem == null)
+
         {
             mySpriteRenderer.color = Color.blue;
+            hasItem = true;
+           
+
         }
-        if (other.CompareTag("Chest Right") && currentItem == null)
+        if (other.CompareTag("Chest Right") && hasItem)
         {
             mySpriteRenderer.color = Color.white;
             Debug.Log("GOAL");
             scoreRight.ReduceScore();
+            hasItem = false;
 
         }
-        if (other.CompareTag("Chest Left") && currentItem == null)
+            if (other.CompareTag("Chest Left") && hasItem)
         {
             mySpriteRenderer.color = Color.white;
             Debug.Log("GOAL");
             scoreLeft.ReduceScore();
+            hasItem = false;
 
         }
     }
