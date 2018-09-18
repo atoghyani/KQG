@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Goal
+  - Ball
+  - Item
+  - Chest
+  - Chest Right
+  - Chest Left
   layers:
   - Default
   - TransparentFX
@@ -14,7 +20,9 @@ TagManager:
   - 
   - 
   - Ground
-  - 
+  - MinimapLayer
+  - Player
+  - floor
   - 
   - 
   - 
