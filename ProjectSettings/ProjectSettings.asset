@@ -617,9 +617,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: e494a06e-e132-47de-bcbf-702760aaf8dc
+  cloudProjectId: 6923bcc5-31c7-4a7a-8154-a2d25c30e316
   projectName: Multi Platformer
-  organizationId: arian-3939252
+  organizationId: kmandiga
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

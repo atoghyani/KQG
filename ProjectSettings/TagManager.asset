@@ -10,6 +10,8 @@ TagManager:
   - Chest
   - Chest Right
   - Chest Left
+  - Ground
+  - Border
   layers:
   - Default
   - TransparentFX
@@ -23,8 +25,6 @@ TagManager:
   - MinimapLayer
   - Player
   - floor
-  - 
-  - 
   - 
   - 
   - 

@@ -6,8 +6,6 @@ using UnityEngine.Networking;
 
 public class Player : NetworkBehaviour
 {
-    public Camera camera;
-
     Rigidbody2D myRigidBody;
     Animator myAnimator;
     SpriteRenderer mySpriteRenderer;
@@ -20,6 +18,7 @@ public class Player : NetworkBehaviour
     Score scoreLeft;
     Score scoreRight;
     bool hasItem = false;
+    Vector2 cl;
 
 
     void Start()
@@ -30,7 +29,7 @@ public class Player : NetworkBehaviour
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         scoreLeft = GameObject.FindWithTag("Chest Left").GetComponent<Score>();
         scoreRight = GameObject.FindWithTag("Chest Right").GetComponent<Score>();
-        Vector2 cl = new Vector2(transform.position.x, transform.position.y + 1);
+        cl = new Vector2(transform.position.x, transform.position.y + 1);
 
 
     }
@@ -38,8 +37,9 @@ public class Player : NetworkBehaviour
     {
         Camera.main.GetComponent<CameraController>().setTarget(gameObject.transform);
     }
-    void FixedUpdate()
+    void Update()
     {
+        
         if (!isLocalPlayer)
         {
             CmdFlipSprite();
@@ -48,7 +48,7 @@ public class Player : NetworkBehaviour
         Run();
         CmdFlipSprite();
         Jump();
-        Vector2 cl = new Vector2(transform.position.x, transform.position.y+1);
+        cl = new Vector2(transform.position.x, transform.position.y+1);
     
 
 
@@ -106,23 +106,18 @@ public class Player : NetworkBehaviour
 
     }
 
-
-
     void OnCollisionEnter2D(Collision2D Other)
     {
-       
+       if(Other.gameObject.tag.Equals("Ground"))
             isGrounded = true;
             // canjump = true;
-            Debug.Log("COLL-Enter" + "  -  Ground:" + isGrounded);
+        
        
     }
-
     void OnCollisionExit2D(Collision2D Other)
     {
-       
+        if(Other.gameObject.tag.Equals("Ground"))
             isGrounded = false;
-
-            Debug.Log("COLL-Exit" + "  -  Ground:" + isGrounded);
         
     }
 
@@ -130,7 +125,6 @@ public class Player : NetworkBehaviour
     {
         // pickup if it has tag "Item" and we are not carrying anything
         if (other.CompareTag("Item") && currentItem == null)
-
         {
             mySpriteRenderer.color = Color.blue;
             hasItem = true;
@@ -153,5 +147,18 @@ public class Player : NetworkBehaviour
             hasItem = false;
 
         }
+        if(other.CompareTag("Border"))
+        {
+            Debug.Log("On Stage");
+            myRigidBody.velocity = new Vector2( -(myRigidBody.velocity.x), myRigidBody.velocity.y);
+        }
+    }
+    void OnTriggerExit2D(Collider2D other) {
+        if(other.CompareTag("Border"))
+        {
+            Debug.Log("Off Stage");
+            myRigidBody.velocity = new Vector2( -(myRigidBody.velocity.x), myRigidBody.velocity.y);
+        }
+            
     }
 }
