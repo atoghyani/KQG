@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 //using UnityStandardAssets.CrossPlatformInput;
 
-public class Player : NetworkBehaviour
+public class RedTeamPlayerScript : NetworkBehaviour
 {
     Rigidbody2D myRigidBody;
     Animator myAnimator;
@@ -126,7 +126,7 @@ public class Player : NetworkBehaviour
         // pickup if it has tag "Item" and we are not carrying anything
         if (other.CompareTag("Item") && currentItem == null)
         {
-            mySpriteRenderer.color = Color.blue;
+            mySpriteRenderer.color = Color.red;
             hasItem = true;
            
 

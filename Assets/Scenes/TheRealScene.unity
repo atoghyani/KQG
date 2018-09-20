@@ -210,7 +210,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1260428292528416, guid: 51bcad2d4f5944acb9306d1b5d401abf, type: 2}
       propertyPath: m_Name
-      value: Goal (1)
+      value: RedGoal
       objectReference: {fileID: 0}
     - target: {fileID: 212915887656550564, guid: 51bcad2d4f5944acb9306d1b5d401abf,
         type: 2}
@@ -888,14 +888,14 @@ MonoBehaviour:
   m_ScriptCRCCheck: 1
   m_MaxDelay: 0.01
   m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 1720923870919424, guid: b9fed1e78e0210e4db249eaaf65b05bf,
+  m_PlayerPrefab: {fileID: 1720923870919424, guid: fe0a45d957e5052419196b425980ecd4,
     type: 2}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
   m_OfflineScene: 
   m_OnlineScene: 
   m_SpawnPrefabs:
-  - {fileID: 1720923870919424, guid: b9fed1e78e0210e4db249eaaf65b05bf, type: 2}
+  - {fileID: 1720923870919424, guid: fe0a45d957e5052419196b425980ecd4, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -1408,6 +1408,10 @@ Prefab:
     - target: {fileID: 4843672657276482, guid: 51bcad2d4f5944acb9306d1b5d401abf, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260428292528416, guid: 51bcad2d4f5944acb9306d1b5d401abf, type: 2}
+      propertyPath: m_Name
+      value: BlueGoal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51bcad2d4f5944acb9306d1b5d401abf, type: 2}
@@ -1931,8 +1935,8 @@ GameObject:
   - component: {fileID: 1805204567}
   - component: {fileID: 1805204566}
   - component: {fileID: 1805204570}
-  m_Layer: 0
-  m_Name: moon
+  m_Layer: 9
+  m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
